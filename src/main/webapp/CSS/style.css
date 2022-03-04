@@ -1,0 +1,8 @@
+@charset "ISO-8859-1";
+.hover-button-nav:hover{
+    background-color: rgb(115, 129, 129);
+    border-radius: 100px;
+}
+body{
+    background-color: #f1f2f3;
+}
