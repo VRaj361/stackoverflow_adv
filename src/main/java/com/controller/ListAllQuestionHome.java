@@ -20,8 +20,15 @@ public class ListAllQuestionHome extends HttpServlet {
 		System.out.println("inside listallquestion servlet");
 		StackoverflowDao dao=new StackoverflowDao();
 		HttpSession session=request.getSession();
-		int userid=(Integer) session.getAttribute("userid");
-		ArrayList<AskAQuestionbean> arr = null; 
+		int userid=-1;
+		if(session.getAttribute("userid")==null) {
+			request.getRequestDispatcher("ListAllQuestionHomeJSP.jsp").forward(request, response);
+		}else {
+		userid=(Integer) session.getAttribute("userid");
+		
+		}
+		ArrayList<AskAQuestionbean> arr = null;
+		
 		try {
 			arr=dao.checkAllDataQuestions(userid);
 		} catch (SQLException e) {

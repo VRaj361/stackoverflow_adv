@@ -13,9 +13,14 @@
   <link rel="stylesheet" href="CSS/style.css" />
 </head>
 <body>
+<% Integer userid=(Integer) session.getAttribute("userid");%>
+<% ArrayList<AskAQuestionbean> arr=(ArrayList<AskAQuestionbean>) request.getAttribute("AllDataQuestions"); 
 
-<% ArrayList<AskAQuestionbean> arr=(ArrayList<AskAQuestionbean>) request.getAttribute("AllDataQuestions"); %>
+	if(arr==null){%>
+		<%="no print" %>
+	<% }else {
 
+%>
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="border-top: 2px solid orange">
         <a class="navbar-brand" href="#">
           <img src="IMAGES/stackoverflow_icon.png" width="30" height="30" alt="" />
@@ -41,6 +46,24 @@
           </ul>
           <form class="form-inline my-2 my-lg-0 w-75" action="LogoutMainServlet">
             <input class="form-control mr-sm-2 w-75" type="search" placeholder="Search" aria-label="Search" />
+            
+       		<% 
+       		
+			       		
+       		if(userid!=null){
+       			
+       			AskAQuestionbean bean=arr.get(0);
+       		
+       		%>     
+            	
+             	<button class="btn btn-success "><%= bean.getFirstname().charAt(0)  %></button>
+             	
+            <%}else{} %>
+            
+            
+            
+            
+            
             <!-- <button class="btn my-2 my-sm-0" style="background-color: #b3d3ea; color: rgb(70, 119, 165);" type="submit">Login</button> -->
             <button class="btn btn-primary my-2 my-sm-0 ml-1" type="submit">
               logout
@@ -49,6 +72,13 @@
         </div>
       </nav>
       <!-- end of navbar -->
+      <%if(userid==null){ %>
+      	<div class=" container mb-5 h-100">
+               <p class="text-center " style="letter-spacing: 2px; font-size: 5rem;">Please Login or Signup</p>
+               
+           </div>
+      <%}else{ %>
+      
       
       	<div class=" container">
       	
@@ -99,7 +129,11 @@
 		<%}} %>
       
       </div>
-      <footer class="page-footer font-small unique-color-dark bg-dark text-light">
+      
+      
+      <%} %>
+      
+      <footer class="page-footer font-small unique-color-dark bg-dark text-light ">
 
 
   
@@ -211,7 +245,7 @@
   
 
 </footer>
-      
+     <%} %> 
       
 </body>
 </html>

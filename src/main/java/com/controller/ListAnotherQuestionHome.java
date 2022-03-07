@@ -19,7 +19,14 @@ public class ListAnotherQuestionHome extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
-		int userid=(Integer) session.getAttribute("userid");
+		int userid=-1;
+		
+		if(session.getAttribute("userid")==null) {
+			request.getRequestDispatcher("ListAllQuestionHomeJSP.jsp").forward(request, response);
+		}else {
+		userid=(Integer) session.getAttribute("userid");
+		
+		}
 		StackoverflowDao dao=new StackoverflowDao();
 		ArrayList<AskAQuestionbean> bean=new ArrayList<AskAQuestionbean>();
 		try {

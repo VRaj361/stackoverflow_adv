@@ -85,8 +85,13 @@
       
       <div class="col pt-2  ">
         <h2 class="d-inline mr-5">Top Questions</h2>
+        
+        <%if(userid==null){}else{ %>
+        
+        
         <button class="ml-5 btn btn-primary mb-5 mt-4"> <a href="AskAQuestionHomeJSP.jsp" style="color:white; text-decoration: none;">Ask Question</a> </button>
         <button class="ml-5 btn btn-primary mb-5 mt-4"> <a href="ListAllQuestionHome" style="color:white; text-decoration: none;">Show Questions</a> </button>
+        <%} %>
 
         <div class="card mt-5 w-100 mb-3" >
           

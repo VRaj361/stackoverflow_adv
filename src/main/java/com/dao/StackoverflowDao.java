@@ -89,7 +89,7 @@ public class StackoverflowDao {
 	public ArrayList<AskAQuestionbean> checkAllDataQuestions(int userid) throws SQLException{
 		System.out.println("inside dao checkAll dataquestions");
 		ArrayList<AskAQuestionbean> arr=new ArrayList<AskAQuestionbean>();
-		PreparedStatement pre=DbConnectionConn.con.prepareStatement("select title,body,issolved,tags from users natural join questions where userid=?");
+		PreparedStatement pre=DbConnectionConn.con.prepareStatement("select title,body,issolved,tags,firstname from users natural join questions where userid=?");
 		pre.setInt(1,userid);
 		ResultSet r=pre.executeQuery();
 		while(r.next()) {
@@ -98,6 +98,7 @@ public class StackoverflowDao {
 			bean.setBody(r.getString("body"));
 			bean.setIssolved(r.getString("issolved"));
 			bean.setTags(r.getString("tags"));
+			bean.setFirstname(r.getString("firstname"));
 			arr.add(bean);
 		}
 		

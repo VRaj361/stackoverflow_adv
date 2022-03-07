@@ -14,7 +14,9 @@
 </head>
 <body>
 	
-	<%ArrayList<AskAQuestionbean> arr=(ArrayList<AskAQuestionbean>)request.getAttribute("ListAllAnotherQuestionHome"); %>
+	
+	<% Integer userid=(Integer) session.getAttribute("userid");%>
+	
   <nav class="navbar navbar-expand-lg navbar-light bg-light" style="border-top: 2px solid orange">
     <a class="navbar-brand" href="#">
       <img src="IMAGES/stackoverflow_icon.png" width="30" height="30" alt="" />
@@ -54,7 +56,15 @@
   
 
 
+	<%if(userid==null){ %>
+		<div class=" container mb-5">
+               <p class="text-center " style="letter-spacing: 2px; font-size: 5rem;">Please Login or Signup</p>
+           
+           </div>
+    <%}else{ %>
 
+
+<%ArrayList<AskAQuestionbean> arr=(ArrayList<AskAQuestionbean>)request.getAttribute("ListAllAnotherQuestionHome");%>
   <div class="container">
     <div class="row ">
       <div class="col-2 collapse show d-md-flex bg-light pt-2 pl-0 min-vh-100" id="sidebar">
@@ -122,7 +132,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div>-
 	       
 	       
 	       
@@ -134,7 +144,7 @@
       </div>
       </div>
      <!-- middle portion -->
-    
+    <%} %>
  
           
           <footer class="page-footer font-small unique-color-dark bg-dark text-light">
