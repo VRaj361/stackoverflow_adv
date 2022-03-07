@@ -14,7 +14,7 @@
                 <a class="navbar-brand" href="#">
                 <img src="IMAGES/stackoverflow_icon.png" width="30" height="30" alt="">
                 </a>
-                <a class="navbar-brand hover-button-nav" href="#">stack<strong>overflow</strong></a>
+                <a class="navbar-brand hover-button-nav" href="StackoverflowHome.jsp">stack<strong>overflow</strong></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>

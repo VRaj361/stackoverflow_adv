@@ -6,6 +6,13 @@ public class AskAQuestionbean {
 	String issolved;
 	int userid;
 	String firstname;
+	String tags;
+	public String getTags() {
+		return tags;
+	}
+	public void setTags(String tags) {
+		this.tags = tags;
+	}
 	public String getTitle() {
 		return title;
 	}

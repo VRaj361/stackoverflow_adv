@@ -20,7 +20,7 @@
         <a class="navbar-brand" href="#">
           <img src="IMAGES/stackoverflow_icon.png" width="30" height="30" alt="" />
         </a>
-        <a class="navbar-brand hover-button-nav" href="#">stack<strong>overflow</strong></a>
+        <a class="navbar-brand hover-button-nav" href="StackoverflowHome.jsp">stack<strong>overflow</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -61,24 +61,157 @@
 		<%for(AskAQuestionbean bean:arr){ %>
 		
 	
-	       <div class="card mt-5 w-75 mb-5" style="background-color: #fdf7e2;">
-	         
-	         <div class="card-body">
-	
-	           <blockquote class="blockquote mb-0">
-	             <p class="text-primary " style="letter-spacing:1px; font-size:2rem">Title : <%=bean.getTitle() %></p>
-	             <!--  <span class="bg-primary p-2 text-light h6">Java</span>
-	             <span class="bg-primary p-2 text-light h6">Servlet</span>
-	             <span class="bg-primary p-2 text-light h6">JSP</span>-->
-	             <p class="text-primary ">Body : <%=bean.getBody() %></p>
-	             <p class="text-danger">Solved : <%=bean.isIssolved().equals("f")?"false":"true" %></p>
-	           </blockquote>
-	         </div>
-	       </div>
+
+	       
+	       
+	        <div class="card mb-3" style="background-color: #fdf7e2;">
+            <div class="row g-0 text-center ">
+              <div class="col-md-2 d-flex align-items-center justify-content-center">
+                0 vote <br>
+                0 answers <br>
+                2 views
+              </div>
+              <div class="col-md-5">
+                <div class="card-body text-left">
+                  <h5 class="card-title"><a href="">Title : <%=bean.getTitle() %> </a></h5>
+                  <h5 class="card-title">Body : <%=bean.getBody() %></h5>
+                  <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>-->
+                  <%String str=bean.getTags();
+    				String arrstr[]=str.split(" ");
+    				for(String str1:arrstr){
+	                  %>
+                  <button class="btn text-primary " style="    background-color: #d0e3f1;"><%=str1%></button>
+                  <%} %>
+                  <!-- <button class="btn text-primary" style="background-color: #d0e3f1;">javscript</button>
+                  <button class="btn text-primary" style="background-color: #d0e3f1;">javscript</button>-->
+                  <p class="card-text "><small class="text-muted ">Last updated 3 mins ago</small></p> 
+                  <p class="text-danger">Solved : <%=bean.isIssolved().equals("f")?"false":"true" %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+	       
+	       
+	       
+	       
+	       
 		
 		<%}} %>
       
       </div>
+      <footer class="page-footer font-small unique-color-dark bg-dark text-light">
+
+
+  
+  <!-- Footer Links -->
+  <hr>
+  <div class="container text-center  text-md-left mt-5">
+		<a class="navbar-brand ml-5 " href="#">
+      <img src="IMAGES/stackoverflow_icon.png" width="30" height="30" alt="" />
+    </a>
+    <!-- Grid row -->
+    <div class="row mt-3">
+
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+        <!-- Content -->
+        <h6 class="text-uppercase font-weight-bold">Stack Overflow</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <a href="#!" style="text-decoration: none; color:grey; ">Question</a>
+        </p>
+        <p>
+          <a href="#!" style="text-decoration: none; color:grey; ">Jobs</a>
+        </p>
+        <p>
+          <a href="#!" style="text-decoration: none; color:grey; ">Developer Jobs Directly</a>
+        </p>
+        <p>
+          <a href="#!" style="text-decoration: none; color:grey; ">Help</a>
+        </p>
+        
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Products</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <a href="#!" style="text-decoration: none; color:grey; ">Teams</a>
+        </p>
+        <p>
+          <a href="#!" style="text-decoration: none; color:grey; ">Talent</a>
+        </p>
+        <p>
+          <a href="#!" style="text-decoration: none; color:grey; ">Advertising</a>
+        </p>
+        <p>
+          <a href="#!" style="text-decoration: none; color:grey; ">Enterprise</a>
+        </p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Company</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <a href="#!" style="text-decoration: none; color:grey; ">About</a>
+        </p>
+        <p>
+          <a href="#!" style="text-decoration: none; color:grey; ">Press</a>
+        </p>
+        <p>
+          <a href="#!" style="text-decoration: none; color:grey; ">Work here</a>
+        </p>
+        <p>
+          <a href="#!" style="text-decoration: none; color:grey; ">Legal</a>
+        </p>
+		
+      </div>	
+      <!-- Grid column -->
+
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Stack Exchange Network</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <a href="#!" style="text-decoration: none; color:grey; ">Technology</a>
+        </p>
+        <p>
+          <a href="#!" style="text-decoration: none; color:grey; ">Life and Arts</a>
+        </p>
+        <p>
+          <a href="#!" style="text-decoration: none; color:grey; ">Science</a>
+        </p>
+        <p>
+          <a href="#!" style="text-decoration: none; color:grey; ">Professional</a>
+        </p>
+      </div>
+
+    </div>
+  
+
+  </div>
+  
+
+  
+  <div class="footer-copyright text-center py-3">© 2022 Copyright:
+    <a href="https://stackoverflow.com/" style="text-decoration: none; white; "> stackoverflow.com</a>
+  </div>
+  
+
+</footer>
+      
       
 </body>
 </html>

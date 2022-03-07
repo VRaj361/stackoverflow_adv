@@ -15,7 +15,7 @@
         <a class="navbar-brand" href="#">
           <img src="IMAGES/stackoverflow_icon.png" width="30" height="30" alt="" />
         </a>
-        <a class="navbar-brand hover-button-nav" href="#">stack<strong>overflow</strong></a>
+        <a class="navbar-brand hover-button-nav" href="StackoverflowHome.jsp">stack<strong>overflow</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -63,17 +63,17 @@
               <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="body_askH"></textarea>
               <p class="text-danger">${body_askHE }</p>
             </div>
-            <!-- x<div class="mb-3 ">
+            <div class="mb-3 ">
                 <label for="exampleInputEmail1" class="form-label">Tags</label>
                 <div id="emailHelp" class="form-text">Add up to 5 tags to describe what your question is about</div>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="tags_askH">
               
-            </div>-->
+            </div>
         </form>
         <button type="submit" form="askaquestionform" class="btn btn-primary mt-4 mb-4">Review your Question</button>
 
         
-
+		
 
       </div>
 </body>
