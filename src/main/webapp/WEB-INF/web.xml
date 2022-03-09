@@ -82,4 +82,14 @@
     <servlet-name>ListAnotherQuestionHome</servlet-name>
     <url-pattern>/ListAnotherQuestionHome</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListParticularQuestion</display-name>
+    <servlet-name>ListParticularQuestion</servlet-name>
+    <servlet-class>com.controller.ListParticularQuestion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListParticularQuestion</servlet-name>
+    <url-pattern>/ListParticularQuestion</url-pattern>
+  </servlet-mapping>
 </web-app>

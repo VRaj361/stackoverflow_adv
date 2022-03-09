@@ -71,7 +71,7 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
 
-              <span class="text-center mt-3">don't have accound? <a href="SignupMainJSP.jsp" style="text-decoration: none;">Signup</a> </span>
+              <span class="text-center mt-3">don't have account? <a href="SignupMainJSP.jsp" style="text-decoration: none;">Signup</a> </span>
               <span class="text-center mt-2">are you an employee? <a href="">Sign up on talent</a></span>
         </div>
 </body>

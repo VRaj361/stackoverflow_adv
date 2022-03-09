@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.bean.AddDataSignupbean;
 import com.bean.AskAQuestionbean;
 import com.bean.CheckDataLoginbean;
+import com.bean.GetAllDataUsingTitle;
 import com.bean.UseridCookie;
 import com.util.DBConnectiongetCon;
 import com.util.DbConnectionConn;
@@ -126,5 +127,28 @@ public class StackoverflowDao {
 		System.out.println(arr);
 		return arr;
 	}
+	
+	
+	
+	public ArrayList<GetAllDataUsingTitle> getAllDataQuestionTitle(String str) throws SQLException{
+		System.out.println("getAllDataQuestion in");
+		PreparedStatement pre=DbConnectionConn.con.prepareStatement("select firstname,questionid,title,body,tags from questions natural join users where title=?;");
+		ArrayList<GetAllDataUsingTitle> arr=new ArrayList<GetAllDataUsingTitle>();
+		pre.setString(1,str);
+		ResultSet r=pre.executeQuery();
+		while(r.next()) {
+			GetAllDataUsingTitle bean=new GetAllDataUsingTitle();
+			bean.setBody(r.getString("body"));
+			bean.setQuestionid(r.getInt("questionid"));
+			bean.setTags(r.getString("tags"));
+			bean.setTitle(r.getString("title"));
+			bean.setFirstname(r.getString("firstname"));
+			arr.add(bean);
+		}
+		System.out.println(arr);
+		return arr;
+		
+	}//get back to array on listparticularquestion 
+
 	
 }

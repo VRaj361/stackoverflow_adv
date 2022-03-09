@@ -17,7 +17,51 @@
 <% ArrayList<AskAQuestionbean> arr=(ArrayList<AskAQuestionbean>) request.getAttribute("AllDataQuestions"); 
 
 	if(arr==null){%>
-		<%="no print" %>
+		
+		
+		<nav class="navbar navbar-expand-lg navbar-light bg-light" style="border-top: 2px solid orange">
+    <a class="navbar-brand" href="#">
+      <img src="IMAGES/stackoverflow_icon.png" width="30" height="30" alt="" />
+    </a>
+    <a class="navbar-brand hover-button-nav" href="StackoverflowHome.jsp">stack<strong>overflow</strong></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link hover-button-nav" href="#">About</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link hover-button-nav" href="#">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link hover-button-nav" href="#">For team</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0 w-75" action="LogoutMainServlet">
+        <input class="form-control mr-sm-2 w-75" type="search" placeholder="Search" aria-label="Search" />
+        
+        
+        	<button class="btn my-2 my-sm-0" style="background-color: #b3d3ea; color: rgb(70, 119, 165);" type="submit"> <a href="LoginMainJSP.jsp" style="text-decoration: none; ">Login</a></button>
+                <button class="btn btn-primary my-2 my-sm-0 ml-1" type="submit"><a href="SignupMainJSP.jsp" style="text-decoration: none; color:white">Signup</a></button>
+        
+      </form>
+    </div>
+  </nav>
+  <!-- end of navbar -->
+
+  <!-- side bar -->
+
+		<div class=" container mb-5">
+               <p class="text-center " style="letter-spacing: 2px; font-size: 5rem;">Please Login or Signup</p>
+           
+           </div>
+		
+
 	<% }else {
 
 %>
@@ -103,7 +147,7 @@
               </div>
               <div class="col-md-5">
                 <div class="card-body text-left">
-                  <h5 class="card-title"><a href="">Title : <%=bean.getTitle() %> </a></h5>
+                  <h5 class="card-title" ><a href="">Title : <%=bean.getTitle() %> </a></h5>
                   <h5 class="card-title">Body : <%=bean.getBody() %></h5>
                   <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>-->
                   <%String str=bean.getTags();

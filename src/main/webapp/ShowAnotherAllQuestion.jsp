@@ -30,6 +30,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
+        
           <a class="nav-link hover-button-nav" href="#">About</a>
         </li>
 
@@ -37,15 +38,21 @@
           <a class="nav-link hover-button-nav" href="#">Products</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link hover-button-nav" href="#">For team</a>
+          <a class="nav-link hover-button	-nav" href="#">For team</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0 w-75" action="LogoutMainServlet">
         <input class="form-control mr-sm-2 w-75" type="search" placeholder="Search" aria-label="Search" />
+        
+        <%if(userid==null){ %>
+        	<button class="btn my-2 my-sm-0" style="background-color: #b3d3ea; color: rgb(70, 119, 165);" type="submit"> <a href="LoginMainJSP.jsp" style="text-decoration: none; ">Login</a></button>
+                <button class="btn btn-primary my-2 my-sm-0 ml-1" type="submit"><a href="SignupMainJSP.jsp" style="text-decoration: none; color:white">Signup</a></button>
+        <%}else{ %>
         <!-- <button class="btn my-2 my-sm-0" style="background-color: #b3d3ea; color: rgb(70, 119, 165);" type="submit">Login</button> -->
         <button class="btn btn-primary my-2 my-sm-0 ml-1" type="submit" >
           logout
         </button>
+        <%} %>
       </form>
     </div>
   </nav>
@@ -88,14 +95,14 @@
       
       
       
-      <div class="col pt-2  ">
+      <div class="col pt-2   ">
         <h2 class="d-inline mr-5">All Questions</h2>
         <button class="ml-5 btn btn-primary mb-5 mt-4"> <a href="AskAQuestionHomeJSP.jsp" style="color:white; text-decoration: none;">Ask Question</a> </button>
         <button class="ml-5 btn btn-primary mb-5 mt-4"> <a href="ListAllQuestionHome" style="color:white; text-decoration: none;">Show Questions</a> </button>
 
        
       	
-		<%if(arr.size()==0){ %>
+		<%if(arr==null){ %>
 	
       		<h3 class="text-center" style="letter-spacing: 1px; font-size: 2rem;">No Record Found</h1>
 		
@@ -108,7 +115,7 @@
 	       
 	       
 	        <div class="card mb-3" style="background-color: #fdf7e2;">
-            <div class="row g-0 text-center ">
+            <form class="row g-0 text-center " action="ListParticularQuestion">
               <div class="col-md-2 d-flex align-items-center justify-content-center">
                 0 vote <br>
                 0 answers <br>
@@ -116,7 +123,17 @@
               </div>
               <div class="col-md-5">
                 <div class="card-body text-left">
-                  <h5 class="card-title"><a href="">Title : <%=bean.getTitle() %> </a></h5>
+                
+                <form action="ListParticularQuestion">
+                
+                  <!--  <input type="hidden" id="" value=" " name="linkQuestionTitle">-->
+                  <h5 class="card-title" >Title: <input type="submit" value="<%=bean.getTitle() %>" style="background: none; color: inherit; border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;"  name="linkQuestionTitle"></h5>
+                  
+                  </form>
                   <h5 class="card-title">Body : <%=bean.getBody() %></h5>
                   <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>-->
                   <%String str=bean.getTags();
@@ -131,8 +148,8 @@
                   <p class="text-danger">Solved : <%=bean.isIssolved().equals("f")?"false":"true" %></p>
                 </div>
               </div>
-            </div>
-          </div>-
+            </form>
+          </div>
 	       
 	       
 	       
