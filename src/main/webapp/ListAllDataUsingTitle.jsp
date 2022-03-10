@@ -1,3 +1,4 @@
+<%@page import="com.bean.SetAnswerUser"%>
 <%@page import="com.bean.GetAllDataUsingTitle"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -15,6 +16,7 @@
 </head>
 <body>
 	<%ArrayList<GetAllDataUsingTitle> arr=(ArrayList<GetAllDataUsingTitle>)request.getAttribute("GetAllDataTitle");
+	ArrayList<SetAnswerUser> arr1=(ArrayList<SetAnswerUser>)request.getAttribute("printAnswerParticularQuestion");
 	Integer userid=(Integer)session.getAttribute("userid");
 	%>
 	
@@ -46,7 +48,7 @@
             <input class="form-control mr-sm-2 w-75" type="search" placeholder="Search" aria-label="Search" />
             <!-- <button class="btn my-2 my-sm-0" style="background-color: #b3d3ea; color: rgb(70, 119, 165);" type="submit">Login</button> -->
             <button class="btn btn-primary my-2 my-sm-0 ml-1" type="submit">
-              logout
+               <a href="LogoutMainJSP.jsp" style="text-decoration: none; color:white">logout</a>
             </button>
           </form>
         </div>
@@ -103,15 +105,50 @@
                       <%} %>
                     </div>
                   </div><!-- div col -->
+                  <hr>
                 <!-- row center -->
                 <!-- total answer -->
                 <!-- another person answer -->
-
+                <%if(arr1!=null){ %>
+				<%for(SetAnswerUser bean1:arr1){ %>
+				
+				<div class="row  text-center ">
+                  <div class="col-md-2 d-flex  align-items-center justify-content-center">
+                    <a href=""><img src="IMAGES/arrowup.png" alt="" ></a>
+                    <a href=""><img src="IMAGES/arrowdown.png" alt="" width="28px"></a>
+                    0 views
+                	</div>
+                
+                                    
+                  
+                    <div class="card-body text-left">
+                    
+                      <h5 class="card-title"><a href="">Title : <%=bean1.getAnswer() %> </a></h5>
+                      <h6 class="card-title">firstname: <%=bean1.getFirstname() %></h6>
+                      <h6 class="card-title">url <%=bean1.getUrl() %></h6>
+                      <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>-->
+                      
+                      
+                       
+                      
+ 
+                    </div>
+                  </div><!-- div col -->
+				
+				<hr>
+				
+				<%}} %>
                 <div class="card">
                     <h2 class="ml-5">your answer</h2>
+                    
                     <form action="AnswerSendAnother">
-                    <textarea name="textareaAnswer" id="" cols="30" rows="10" class="m-5"></textarea>
-                    <button type="submit" ></button>
+                    <%for(GetAllDataUsingTitle bean:arr){ %>
+                    <input type="hidden" name="getTitleCheck" value="<%=bean.getTitle()%>">
+                    <%} %>
+                    <textarea name="textareaAnswer" id="" cols="100" rows="12" class="m-5"></textarea>
+                    <label class="ml-5 h4">Url</label><br>
+                    <input type="text" name="getURLAnswer" class="ml-5 mb-4 w-75"><br>
+                    <button type="submit " class="btn btn-primary mb-5 float-right mr-5" >Post Your Answer</button>
                     </form>
                 </div>
               </div><!-- div card -->

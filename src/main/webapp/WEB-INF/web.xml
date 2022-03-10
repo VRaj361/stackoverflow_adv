@@ -92,4 +92,14 @@
     <servlet-name>ListParticularQuestion</servlet-name>
     <url-pattern>/ListParticularQuestion</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AnswerSendAnother</display-name>
+    <servlet-name>AnswerSendAnother</servlet-name>
+    <servlet-class>com.controller.AnswerSendAnother</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AnswerSendAnother</servlet-name>
+    <url-pattern>/AnswerSendAnother</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -50,11 +50,11 @@
         <%}else{ %>
         <!-- <button class="btn my-2 my-sm-0" style="background-color: #b3d3ea; color: rgb(70, 119, 165);" type="submit">Login</button> -->
         <button class="btn btn-primary my-2 my-sm-0 ml-1" type="submit" >
-          logout
+          <a href="LogoutMainJSP.jsp" style="text-decoration: none; color:white">logout</a>
         </button>
         <%} %>
       </form>
-    </div>
+    </div>	
   </nav>
   <!-- end of navbar -->
 

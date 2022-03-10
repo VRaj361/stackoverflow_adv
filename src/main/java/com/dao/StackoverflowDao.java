@@ -15,12 +15,15 @@ import com.bean.AddDataSignupbean;
 import com.bean.AskAQuestionbean;
 import com.bean.CheckDataLoginbean;
 import com.bean.GetAllDataUsingTitle;
+import com.bean.SetAnswerUser;
 import com.bean.UseridCookie;
 import com.util.DBConnectiongetCon;
 import com.util.DbConnectionConn;
 import com.util.UserCounterStatic;
 
 public class StackoverflowDao {
+	
+
 	public void insertData(AddDataSignupbean bean) throws SQLException {
 //		Connection con=DbConnectionConn.con.getConnection();
 		System.out.println("insert in");
@@ -151,4 +154,55 @@ public class StackoverflowDao {
 	}//get back to array on listparticularquestion 
 
 	
+	public int getQuestionIdTitle(String title) throws SQLException {
+		System.out.println("getQuestion id fetch using title");
+		PreparedStatement pre=DbConnectionConn.con.prepareStatement("select questionid from questions where title=?");
+		pre.setString(1, title);
+		ResultSet r=pre.executeQuery();
+		int questionid=-1;
+		while(r.next()) {
+			questionid=r.getInt("questionid");
+		}
+		System.out.println(questionid+"  id");
+		return questionid;
+		
+		
+		
+		
+	}//getquestion id using title 
+	
+	
+	public void setAllDetailsAnswer(SetAnswerUser bean) throws SQLException{
+		System.out.println("setall detail answer");
+		PreparedStatement pre=DbConnectionConn.con.prepareStatement("insert into answers (userid,questionid,answer,url) values(?,?,?,?)");
+		pre.setInt(1, bean.getUserid());
+		pre.setInt(2,bean.getQuestionid());
+		pre.setString(3, bean.getAnswer());
+		pre.setString(4, bean.getUrl());
+		int row=pre.executeUpdate();
+		System.out.println("inserted into answer table "+row);
+		
+		
+	}//return array
+	
+	public ArrayList<SetAnswerUser> getAllAnswerParticularQuestion(int questionid) throws SQLException{
+		System.out.println("Fetch the data");
+		PreparedStatement pre=DbConnectionConn.con.prepareStatement("select userid,questionid,answer,url,firstname from answers natural join users where questionid=?");
+		pre.setInt(1, questionid);
+		ResultSet r=pre.executeQuery();
+		ArrayList<SetAnswerUser> arr11=new ArrayList<SetAnswerUser>();
+		while(r.next()) {
+			SetAnswerUser bean1=new SetAnswerUser();
+			bean1.setQuestionid(r.getInt("questionid"));
+			bean1.setUserid(r.getInt("userid"));
+			bean1.setAnswer(r.getString("answer"));
+			bean1.setUrl(r.getString("url"));
+			bean1.setFirstname(r.getString("firstname"));
+			arr11.add(bean1);
+			
+		}
+		
+		return arr11;
+	}
+		
 }
