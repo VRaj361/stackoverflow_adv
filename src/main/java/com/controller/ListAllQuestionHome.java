@@ -19,14 +19,17 @@ public class ListAllQuestionHome extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("inside listallquestion servlet");
 		StackoverflowDao dao=new StackoverflowDao();
+		System.out.println("enter the in list all quesitton home");
 		HttpSession session=request.getSession();
 		int userid=-1;
 		if(session.getAttribute("userid")==null) {
+			System.out.println(userid+" which is already null");
 			request.getRequestDispatcher("ListAllQuestionHomeJSP.jsp").forward(request, response);
 		}else {
 		userid=(Integer) session.getAttribute("userid");
 		
 		}
+		System.out.println(userid+" this is userid which can fetch using ----------------------");
 		ArrayList<AskAQuestionbean> arr = null;
 		
 		try {

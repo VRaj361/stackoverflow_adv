@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,10 +24,13 @@ public class ListParticularQuestion extends HttpServlet {
 		String str=request.getParameter("linkQuestionTitle");
 		System.out.println(str);
 		ArrayList<GetAllDataUsingTitle> arr = null;
+		
+	
 		StackoverflowDao dao=new StackoverflowDao();
 		if(str!=null) {
 			HttpSession session=request.getSession();
 			session.setAttribute("StringTitle", str);
+//			int userid=(Integer) session.getAttribute("userid");
 			try {
 				arr=dao.getAllDataQuestionTitle(str);
 			} catch (SQLException e) {

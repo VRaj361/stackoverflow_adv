@@ -18,6 +18,7 @@
 	<%ArrayList<GetAllDataUsingTitle> arr=(ArrayList<GetAllDataUsingTitle>)request.getAttribute("GetAllDataTitle");
 	ArrayList<SetAnswerUser> arr1=(ArrayList<SetAnswerUser>)request.getAttribute("printAnswerParticularQuestion");
 	Integer userid=(Integer)session.getAttribute("userid");
+	int userid_check=-1;
 	%>
 	
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="border-top: 2px solid orange">
@@ -46,6 +47,7 @@
           </ul>
           <form class="form-inline my-2 my-lg-0 w-75">
             <input class="form-control mr-sm-2 w-75" type="search" placeholder="Search" aria-label="Search" />
+           
             <!-- <button class="btn my-2 my-sm-0" style="background-color: #b3d3ea; color: rgb(70, 119, 165);" type="submit">Login</button> -->
             <button class="btn btn-primary my-2 my-sm-0 ml-1" type="submit">
                <a href="LogoutMainJSP.jsp" style="text-decoration: none; color:white">logout</a>
@@ -88,8 +90,23 @@
                                     
                   
                     <div class="card-body text-left">
+                    
+                    
+                    
                     <%for(GetAllDataUsingTitle bean:arr){ %>
-                      <h5 class="card-title"><a href="">Title : <%=bean.getTitle() %> </a></h5>
+                    
+                      
+                       <form action="ListParticularQuestion">
+                
+                  <!--  <input type="hidden" id="" value=" " name="linkQuestionTitle">-->
+                  <h5 class="card-title" >Title: <input type="submit" value="<%=bean.getTitle() %>" style="background: none; color: inherit; border: none;
+					padding: 0;font: inherit;cursor: pointer;outline: inherit;"  name="linkQuestionTitle"></h5>
+                  
+                  </form>
+                      
+                      <%=bean.getUserid() %>
+                      <%userid_check=bean.getUserid(); %>
+                      
                       <h5 class="card-title">Body : <%=bean.getBody() %></h5>
                       <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>-->
                       <%String str=bean.getTags();
@@ -110,9 +127,12 @@
                 <!-- total answer -->
                 <!-- another person answer -->
                 <%if(arr1!=null){ %>
+                <h3 class="ml-5">Answers :<%=arr1.size() %></h3>
+				<hr>
 				<%for(SetAnswerUser bean1:arr1){ %>
 				
 				<div class="row  text-center ">
+				
                   <div class="col-md-2 d-flex  align-items-center justify-content-center">
                     <a href=""><img src="IMAGES/arrowup.png" alt="" ></a>
                     <a href=""><img src="IMAGES/arrowdown.png" alt="" width="28px"></a>
@@ -130,9 +150,21 @@
                       
                       
                        
-                      
- 
+                      <%=bean1.getisIsaccepted() %>
+ 					<%if(userid_check==userid&&bean1.getisIsaccepted()!=true){ %>
+ 					<form action="IsSolvedCallDB">
+                    	<button class="btn btn-success" type="submit">Tick As Answer</button>
+                    	<input type="hidden" name="questionid_set_db" value="<%=bean1.getQuestionid()%>">
+                    	<input type="hidden" name="answerid_set_db" value="<%=bean1.getAnswersid()%>">
+                    	</form>
+                    <%}else if(userid_check==userid&&bean1.getisIsaccepted()==true){ %>
+                    
+                    	<img alt="this is image" src="CSS/green_tick_true.png">
+                    
+                    
+                    <%} %>
                     </div>
+                    
                   </div><!-- div col -->
 				
 				<hr>

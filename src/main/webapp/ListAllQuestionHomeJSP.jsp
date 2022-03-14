@@ -147,7 +147,13 @@
               </div>
               <div class="col-md-5">
                 <div class="card-body text-left">
-                  <h5 class="card-title" ><a href="">Title : <%=bean.getTitle() %> </a></h5>
+                  <form action="ListParticularQuestion">
+                
+                  <!--  <input type="hidden" id="" value=" " name="linkQuestionTitle">-->
+                  <h5 class="card-title" >Title: <input type="submit" value="<%=bean.getTitle() %>" style="background: none; color: inherit; border: none;
+					padding: 0;font: inherit;cursor: pointer;outline: inherit;"  name="linkQuestionTitle"></h5>
+                  
+                  </form>
                   <h5 class="card-title">Body : <%=bean.getBody() %></h5>
                   <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>-->
                   <%String str=bean.getTags();

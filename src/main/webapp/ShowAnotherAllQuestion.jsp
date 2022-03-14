@@ -49,6 +49,9 @@
                 <button class="btn btn-primary my-2 my-sm-0 ml-1" type="submit"><a href="SignupMainJSP.jsp" style="text-decoration: none; color:white">Signup</a></button>
         <%}else{ %>
         <!-- <button class="btn my-2 my-sm-0" style="background-color: #b3d3ea; color: rgb(70, 119, 165);" type="submit">Login</button> -->
+         <button class="btn btn-primary my-2 my-sm-0 ml-1" type="submit">
+               <a href="SearchDataServlet" style="text-decoration: none; color:white">Search</a>
+            </button>
         <button class="btn btn-primary my-2 my-sm-0 ml-1" type="submit" >
           <a href="LogoutMainJSP.jsp" style="text-decoration: none; color:white">logout</a>
         </button>

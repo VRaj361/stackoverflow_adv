@@ -6,6 +6,20 @@ public class SetAnswerUser {
 	int userid;
 	int questionid;
 	String firstname;
+	boolean isaccepted;
+	int answersid;
+	public int getAnswersid() {
+		return answersid;
+	}
+	public void setAnswersid(int answersid) {
+		this.answersid = answersid;
+	}
+	public boolean getisIsaccepted() {
+		return isaccepted;
+	}
+	public void setIsaccepted(boolean isaccepted) {
+		this.isaccepted = isaccepted;
+	}
 	public String getFirstname() {
 		return firstname;
 	}

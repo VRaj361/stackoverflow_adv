@@ -102,4 +102,14 @@
     <servlet-name>AnswerSendAnother</servlet-name>
     <url-pattern>/AnswerSendAnother</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>IsSolvedCallDB</display-name>
+    <servlet-name>IsSolvedCallDB</servlet-name>
+    <servlet-class>com.controller.IsSolvedCallDB</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IsSolvedCallDB</servlet-name>
+    <url-pattern>/IsSolvedCallDB</url-pattern>
+  </servlet-mapping>
 </web-app>

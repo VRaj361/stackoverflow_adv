@@ -135,7 +135,7 @@ public class StackoverflowDao {
 	
 	public ArrayList<GetAllDataUsingTitle> getAllDataQuestionTitle(String str) throws SQLException{
 		System.out.println("getAllDataQuestion in");
-		PreparedStatement pre=DbConnectionConn.con.prepareStatement("select firstname,questionid,title,body,tags from questions natural join users where title=?;");
+		PreparedStatement pre=DbConnectionConn.con.prepareStatement("select firstname,questionid,title,body,tags,userid from questions natural join users where title=?;");
 		ArrayList<GetAllDataUsingTitle> arr=new ArrayList<GetAllDataUsingTitle>();
 		pre.setString(1,str);
 		ResultSet r=pre.executeQuery();
@@ -146,6 +146,7 @@ public class StackoverflowDao {
 			bean.setTags(r.getString("tags"));
 			bean.setTitle(r.getString("title"));
 			bean.setFirstname(r.getString("firstname"));
+			bean.setUserid(r.getInt("userid"));
 			arr.add(bean);
 		}
 		System.out.println(arr);
@@ -187,7 +188,7 @@ public class StackoverflowDao {
 	
 	public ArrayList<SetAnswerUser> getAllAnswerParticularQuestion(int questionid) throws SQLException{
 		System.out.println("Fetch the data");
-		PreparedStatement pre=DbConnectionConn.con.prepareStatement("select userid,questionid,answer,url,firstname from answers natural join users where questionid=?");
+		PreparedStatement pre=DbConnectionConn.con.prepareStatement("select userid,questionid,answer,url,firstname,isaccepted,answersid from answers natural join users where questionid=?");
 		pre.setInt(1, questionid);
 		ResultSet r=pre.executeQuery();
 		ArrayList<SetAnswerUser> arr11=new ArrayList<SetAnswerUser>();
@@ -198,11 +199,27 @@ public class StackoverflowDao {
 			bean1.setAnswer(r.getString("answer"));
 			bean1.setUrl(r.getString("url"));
 			bean1.setFirstname(r.getString("firstname"));
+			bean1.setAnswersid(r.getInt("answersid"));
 			arr11.add(bean1);
 			
 		}
 		
 		return arr11;
+	}
+	
+	
+	public void isSolvedCalled(int answerid,int questionid) throws SQLException {
+		PreparedStatement pre=DbConnectionConn.con.prepareStatement("update answers set isaccepted=TRUE where answersid=?");
+		pre.setInt(1,answerid);
+		pre.executeUpdate();
+		
+		PreparedStatement pre1=DbConnectionConn.con.prepareStatement("update questions set issolved=TRUE where questionid=?");
+		pre1.setInt(1,questionid);
+		pre.executeUpdate();
+		
+		
+		
+		
 	}
 		
 }
